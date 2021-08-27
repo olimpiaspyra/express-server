@@ -4,7 +4,7 @@
 
 {{#if isSent}}
 <div class="isSent">
-    The message has been sent!
+    The message has been sent! File {{image}} has been saved"
 </div>
 {{/if}}
 
@@ -14,7 +14,7 @@
 </div>
 {{/if}}
 
-<form action="/contact/send-message" method="POST">
+<form action="/contact/send-message" method="POST" enctype="multipart/form-data">
     <label>
         Your name: <input type="text" name="author">
     </label>
@@ -23,6 +23,9 @@
     </label>
     <label>
         Title: <input type="text" name="title">
+    </label>
+    <label>
+        Project design: <input type="file" name="image" accept=".png, .jpg, .gif, .jpeg">
     </label>
     <label>
         Message: <textarea name="message"></textarea>
