@@ -37,18 +37,19 @@ app.get('/history', (req, res) => {
   res.render('history');
 });
 
-app.post('/contact/send-message', upload.single('image'), (req, res) => {
+app.post('/contact/send-message', upload.single('image'), (req, res) => { 
 
   const { author, sender, title, message } = req.body;
-  const {image} = req.file;
-
-  if(author && sender && title && message && image) {
-    res.render('contact', { isSent: true, image});
+  const {fieldname, originalname} = req.file;   
+  
+  if(author && sender && title && message && fieldname) {   
+    res.render('contact', { isSent: true, image: originalname});
   }
   else {
     res.render('contact', { isError: true });
   }
 
+  console.log(req.file, req.body)
 });
 
 app.use((req, res) => {
